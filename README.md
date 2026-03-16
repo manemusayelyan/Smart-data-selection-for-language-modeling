@@ -28,7 +28,7 @@ Performed continual pretraining (CPT) of TinyLlama-1.1B on the `OpenWebMath` dat
 | Evaluation                 | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT‡ | MATH |
 |----------------------------|-------|-------|-------|-------|-----|-----|-----------|------|------|
 | TinyLlama-1.1B CT (Rho-1 paper) | 6.4 | 21.7 | 36.7 | 47.7 | 17.9 | 13.9 | 23.0 | 25.0 | 2.4 |
-| TinyLlama-1.1B CT (My evaluation) | — | — | — | — | — | — | — | — | — |
+| TinyLlama-1.1B CT (My evaluation) | 6.0 | 19.3 | 31.2 | 42.1 | 14.4 | 12.4 | 21.0 | 28.1 | 3.9 |
 
 &nbsp;
 
