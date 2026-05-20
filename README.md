@@ -112,7 +112,7 @@ Additionally, we performed Selective Language Modeling (SLM) experiments inspire
 <tbody>
 
 <tr style="background-color:#f2f2f2;">
-<td><b>TinyLlama_CT</b></td>
+<td><b>TinyLlama_CT </b></td>
 <td>1.1B</td>
 <td>OWM</td>
 <td>14B</td>
@@ -131,7 +131,7 @@ Additionally, we performed Selective Language Modeling (SLM) experiments inspire
 </tr>
 
 <tr style="background-color:#ffffff;">
-<td><b>TinyLlama_CT</b></td>
+<td><b>TinyLlama_CT </b></td>
 <td>1.1B</td>
 <td>OWM</td>
 <td>14B</td>
@@ -169,7 +169,7 @@ Additionally, we performed Selective Language Modeling (SLM) experiments inspire
 </tr>
 
 <tr style="background-color:#fff3cd;">
-<td><b>TinyLlama-SLM</b></td>
+<td><b>TinyLlama-SLM </b></td>
 <td>1.1B</td>
 <td>OWM</td>
 <td>14B</td>
@@ -188,7 +188,7 @@ Additionally, we performed Selective Language Modeling (SLM) experiments inspire
 </tr>
 
 <tr style="background-color:#e6f7ff;">
-<td><b>TinyLlama-SLM</b></td>
+<td><b>TinyLlama-SLM </b></td>
 <td>1.1B</td>
 <td>OWM</td>
 <td>14B</td>
