@@ -1,6 +1,64 @@
 # Capstone: Smart data selection for language modeling
 
-Training TinyLlama-1.1B on the same set as Rho-1 but with a new type of filtering inspired by the works below. Using hierarchical clustering on token representations that are computed using the reference model (keeping the contexts).
+LLMs have achieved remarkable progress through the scaling paradigm: increasing model size, training data, and compute consistently improves performance. However, standard pretraining pipelines still rely on a simple assumption — every token in the training corpus contributes equally to learning. In practice, large-scale web datasets are highly heterogeneous: many tokens are repetitive and easily predictable, while others contain rare, complex, or domain-specific information that provides significantly stronger learning signals. Treating all tokens uniformly leads to substantial computational inefficiency, especially at the scale of billions of training tokens.
+
+At the same time, constructing high-quality pretraining datasets has become increasingly difficult. Web-scale corpora often contain duplicated, noisy, or imbalanced content, making principled data selection essential for effective training. Recent work on data-constrained scaling laws further suggests that carefully selected high-quality data can outperform larger but lower-quality corpora, particularly when compute budgets are limited.
+
+This project investigates intelligent data selection for mathematical language model training by comparing two complementary approaches:
+
+1. **Hierarchical Clustering-Based Data Curation**
+   Inspired by *Automatic Data Curation for Self-Supervised Learning: A Clustering-Based Approach*, this method performs hierarchical k-means clustering on dataset embeddings to create balanced and diverse subsets of training data. The goal is to preserve broad topical and conceptual coverage while reducing redundancy and low-quality samples.
+
+2. **RHO-1 Token-Level Selection**
+   Inspired by *RHO-1: Not All Tokens Are What You Need*, this method operates at the token level rather than the document level. A reference model trained on curated mathematical data identifies informative tokens using per-token reference loss, allowing training to focus gradient updates only on tokens that provide meaningful learning signal.
+
+Although both methods aim to improve training efficiency and model quality, they operate at different granularities: clustering selects *which documents* are used for training, while RHO-1 selects *which tokens* within those documents contribute to optimization. This project studies these approaches both independently and in combination to determine whether they provide complementary benefits.
+
+Experiments are conducted using the `OpenWebMath` dataset and `TinyLlama-1.1B` as the base model. Evaluation is performed across a diverse suite of mathematical reasoning benchmarks including GSM8K, SVAMP, ASDiv, MAWPS, MATH, TAB MQA, SAT, and MMLU STEM. In addition to comparing clustering and RHO-1 individually, the project also explores:
+
+* hybrid pipelines combining both methods,
+* repeated training on smaller high-quality subsets,
+* and comparisons between principled clustering-based selection and random subset sampling.
+
+The goal of this work is to better understand how intelligent data selection can improve mathematical reasoning performance under constrained compute and data budgets.
+
+---
+
+# Method Comparison
+
+| Aspect                        | Hierarchical Clustering                                | RHO-1                                      |
+| ----------------------------- | ------------------------------------------------------ | ------------------------------------------ |
+| Granularity                   | Dataset / document level                               | Token level                                |
+| Main Idea                     | Select diverse and balanced documents                  | Select informative tokens                  |
+| Inspired By                   | *Automatic Data Curation for Self-Supervised Learning* | *RHO-1: Not All Tokens Are What You Need*  |
+| Selection Target              | Entire documents                                       | Individual tokens                          |
+| Goal                          | Improve corpus quality and diversity                   | Improve gradient efficiency                |
+| Core Mechanism                | Hierarchical k-means clustering on embeddings          | Reference-loss-based token filtering       |
+| Potential Weakness            | May keep low-value tokens inside good documents        | Depends heavily on reference model quality |
+
+---
+
+# Experimental Pipelines
+
+| Pipeline                     | Description                                    |
+| ---------------------------- | ---------------------------------------------- |
+| Baseline CPT                 | Standard continual pretraining on OpenWebMath  |
+| Clustering Only              | Train on clustering-selected subset            |
+| RHO-1 Only                   | Token-level selective training                 |
+| Hybrid (Clustering + RHO-1)  | Apply RHO-1 inside clustering-selected corpus  |
+| Repeated High-Quality Subset | Train repeatedly on reduced curated subset     |
+| Random Subset Baseline       | Randomly sampled subset with same token budget |
+
+---
+
+# Key Research Questions
+
+| Question                                                                    | Motivation                                      |
+| --------------------------------------------------------------------------- | ----------------------------------------------- |
+| Does clustering improve mathematical reasoning compared to random sampling? | Measure value of structured data selection      |
+| Does RHO-1 outperform dataset-level filtering alone?                        | Compare token-level vs document-level selection |
+| Are clustering and RHO-1 complementary?                                     | Test hybrid pipeline effectiveness              |
+| Can smaller repeated datasets outperform larger mixed-quality datasets?     | Validate data-constrained scaling laws          |
 
 ### Inspired by:
 1. [Automatic Data Curation for Self-Supervised Learning: A Clustering-Based Approach](https://arxiv.org/abs/2405.15613)
