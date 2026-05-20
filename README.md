@@ -76,28 +76,6 @@ The baseline model `TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T` was eva
 | TinyLlama-1.1B (Rho-1 paper) | 2.9 | 11.0 | 18.1 | 20.4 | 12.5 | 14.6 | 16.1 | 21.9 | 3.2 |
 | TinyLlama-1.1B &nbsp;(My evaluation) | 2.7 | 10.9 | 17.9 | 20.5 | 12.5 | 13.9 | 16.4 | 21.9 | 2.2 |
 
-<table>
-  <tr>
-    <th>Model</th>
-    <th>GSM8K</th>
-    <th>SVAMP</th>
-    <th>MATH</th>
-  </tr>
-
-  <tr style="background-color:#f5f5f5;">
-    <td>TinyLlama-1.1B (Rho-1 paper)</td>
-    <td><b>6.4</b></td>
-    <td><b>21.7</b></td>
-    <td>2.4</td>
-  </tr>
-
-  <tr style="background-color:#e6f7ff;">
-    <td>TinyLlama-1.1B (My evaluation)</td>
-    <td>6.0</td>
-    <td>19.3</td>
-    <td><b>3.9</b></td>
-  </tr>
-</table>
                                                                                                     
 &nbsp;
                                                                                                  
@@ -111,6 +89,90 @@ Performed continual pretraining (CPT) of TinyLlama-1.1B on the `OpenWebMath` dat
 | TinyLlama-1.1B CT (Rho-1 paper) | 6.4 | 21.7 | 36.7 | 47.7 | 17.9 | 13.9 | 23.0 | 25.0 | 2.4 |
 | TinyLlama-1.1B CT (My evaluation) | 6.0 | 19.3 | 31.2 | 42.1 | 14.4 | 12.4 | 21.0 | 28.1 | 3.9 |
 
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>|θ|</th>
+<th>Data</th>
+<th>Uniq. Toks</th>
+<th>For.</th>
+<th>Back.</th>
+<th>GSM8K</th>
+<th>SVAMP</th>
+<th>ASDiv</th>
+<th>MAWPS</th>
+<th>TAB</th>
+<th>MQA</th>
+<th>MMLU STEM</th>
+<th>SAT</th>
+<th>MATH</th>
+<th>Avg.</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr style="background-color:#f2f2f2;">
+<td><b>TinyLlama_CT</b></td>
+<td>1.1B</td>
+<td>OWM</td>
+<td>14B</td>
+<td>15B</td>
+<td>15B</td>
+<td>6.4</td>
+<td>21.7</td>
+<td>36.7</td>
+<td>47.7</td>
+<td>17.9</td>
+<td>13.9</td>
+<td>23.0</td>
+<td>25.0</td>
+<td>2.4</td>
+<td>21.6</td>
+</tr>
+
+<tr style="background-color:#ffffff;">
+<td><b>TinyLlama_CT</b></td>
+<td>1.1B</td>
+<td>OWM</td>
+<td>14B</td>
+<td>15B</td>
+<td>15B</td>
+<td>5.3</td>
+<td>19.9</td>
+<td>32.7</td>
+<td>42.1</td>
+<td>14.7</td>
+<td>11.9</td>
+<td>20.4</td>
+<td>25.0</td>
+<td>3.5</td>
+<td>19.5</td>
+</tr>
+
+<tr style="background-color:#e6f7ff;">
+<td><b>Rho-1-Math (SLM)</b></td>
+<td>1.1B</td>
+<td>OWM</td>
+<td>14B</td>
+<td>15B</td>
+<td>9B</td>
+<td><b>29.8</b></td>
+<td><b>49.2</b></td>
+<td><b>61.4</b></td>
+<td><b>79.8</b></td>
+<td><b>25.8</b></td>
+<td><b>30.4</b></td>
+<td><b>24.7</b></td>
+<td><b>28.1</b></td>
+<td><b>14.0</b></td>
+<td><b>38.1</b></td>
+</tr>
+
+</tbody>
+</table>
 &nbsp;
 
 > **Note:** The TinyLlama-CT model was not publicly released, comparisons are based on reported metrics.
