@@ -76,12 +76,28 @@ The baseline model `TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T` was eva
 | TinyLlama-1.1B (Rho-1 paper) | 2.9 | 11.0 | 18.1 | 20.4 | 12.5 | 14.6 | 16.1 | 21.9 | 3.2 |
 | TinyLlama-1.1B &nbsp;(My evaluation) | 2.7 | 10.9 | 17.9 | 20.5 | 12.5 | 13.9 | 16.4 | 21.9 | 2.2 |
 
-## Few-shot CoT Reasoning Results
+<table>
+  <tr>
+    <th>Model</th>
+    <th>GSM8K</th>
+    <th>SVAMP</th>
+    <th>MATH</th>
+  </tr>
 
-| Model | GSM8K ↑ | SVAMP ↑ | ASDiv ↑ | MAWPS ↑ | TAB ↑ | MQA ↑ | MMLU STEM ↑ | SAT ↑ | MATH ↑ |
-|:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| TinyLlama-1.1B | **2.9** | **11.0** | **18.1** | 20.4 | 12.5 | **14.6** | 16.1 | 21.9 | **3.2** |
-| TinyLlama-1.1B | 2.7 | 10.9 | 17.9 | **20.5** | **12.5** | 13.9 | **16.4** | **21.9** | 2.2 |
+  <tr style="background-color:#f5f5f5;">
+    <td>TinyLlama-1.1B (Rho-1 paper)</td>
+    <td><b>6.4</b></td>
+    <td><b>21.7</b></td>
+    <td>2.4</td>
+  </tr>
+
+  <tr style="background-color:#e6f7ff;">
+    <td>TinyLlama-1.1B (My evaluation)</td>
+    <td>6.0</td>
+    <td>19.3</td>
+    <td><b>3.9</b></td>
+  </tr>
+</table>
                                                                                                     
 &nbsp;
                                                                                                  
