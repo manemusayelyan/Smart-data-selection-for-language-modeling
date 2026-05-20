@@ -71,24 +71,21 @@ The goal of this work is to better understand how intelligent data selection can
 The baseline model `TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T` was evaluated on the exact set of benchmark tasks used by the Rho-1 authors. The comparison results are shown in the table below.
 ## Few-shot CoT reasoning results 
 
-| Evaluation                   | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT‡ | MATH |
+| Model                   | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT‡ | MATH |
 |------------------------------|-------|-------|-------|-------|-----|-----|-----------|------|------|
-| TinyLlama-1.1B (Rho-1 paper) | 2.9 | 11.0 | 18.1 | 20.4 | 12.5 | 14.6 | 16.1 | 21.9 | 3.2 |
-| TinyLlama-1.1B &nbsp;(My evaluation) | 2.7 | 10.9 | 17.9 | 20.5 | 12.5 | 13.9 | 16.4 | 21.9 | 2.2 |
+| TinyLlama-1.1B | 2.9 | 11.0 | 18.1 | 20.4 | 12.5 | 14.6 | 16.1 | 21.9 | 3.2 |
+| TinyLlama-1.1B &nbsp; | 2.7 | 10.9 | 17.9 | 20.5 | 12.5 | 13.9 | 16.4 | 21.9 | 2.2 |
 
                                                                                                     
 &nbsp;
                                                                                                  
-## Continual Pretraining (CPT) Results
+## Reproducing CPT and SLM from RHO-1
 
 Performed continual pretraining (CPT) of TinyLlama-1.1B on the `OpenWebMath` dataset following the RHO-1 study. The table below compares our CPT results with the results reported by the RHO-1 authors.
+
+Additionally, we performed Selective Language Modeling (SLM) experiments inspired by the RHO-1 framework. Since the original high-quality curated dataset used to train the reference model in the RHO-1 paper was not publicly available, we reproduced the self-reference reference-model approach proposed by the authors and used it to perform selective token training. The table below presents a comparison between the results reported in the original paper and our reproduced implementation.
+
 ## Few-shot CoT reasoning results 
-
-| Evaluation                 | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT‡ | MATH |
-|----------------------------|-------|-------|-------|-------|-----|-----|-----------|------|------|
-| TinyLlama-1.1B CT (Rho-1 paper) | 6.4 | 21.7 | 36.7 | 47.7 | 17.9 | 13.9 | 23.0 | 25.0 | 2.4 |
-| TinyLlama-1.1B CT (My evaluation) | 6.0 | 19.3 | 31.2 | 42.1 | 14.4 | 12.4 | 21.0 | 28.1 | 3.9 |
-
 
 <table>
 <thead>
