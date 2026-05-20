@@ -75,6 +75,13 @@ The baseline model `TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T` was eva
 |------------------------------|-------|-------|-------|-------|-----|-----|-----------|------|------|
 | TinyLlama-1.1B (Rho-1 paper) | 2.9 | 11.0 | 18.1 | 20.4 | 12.5 | 14.6 | 16.1 | 21.9 | 3.2 |
 | TinyLlama-1.1B &nbsp;(My evaluation) | 2.7 | 10.9 | 17.9 | 20.5 | 12.5 | 13.9 | 16.4 | 21.9 | 2.2 |
+
+## Few-shot CoT Reasoning Results
+
+| Model | GSM8K ↑ | SVAMP ↑ | ASDiv ↑ | MAWPS ↑ | TAB ↑ | MQA ↑ | MMLU STEM ↑ | SAT ↑ | MATH ↑ |
+|:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| TinyLlama-1.1B | **2.9** | **11.0** | **18.1** | 20.4 | 12.5 | **14.6** | 16.1 | 21.9 | **3.2** |
+| TinyLlama-1.1B | 2.7 | 10.9 | 17.9 | **20.5** | **12.5** | 13.9 | **16.4** | **21.9** | 2.2 |
                                                                                                     
 &nbsp;
                                                                                                  
