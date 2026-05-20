@@ -216,3 +216,12 @@ Additionally, we performed Selective Language Modeling (SLM) experiments inspire
 
 ## Hierarchical Clustering on Open Web Math Dataset Embeddings
 Embedding Model: `intfloat/e5-base-v2`
+
+## Hierarchical Clustering Continual Pretraining (Clust. CPT)
+
+To investigate whether principled dataset-level curation improves mathematical reasoning performance, we performed continual pretraining on subsets of `OpenWebMath` selected using hierarchical clustering. Following the clustering-based data curation approach, the dataset was embedded and organized into a multi-level hierarchy of semantic clusters, allowing balanced sampling across diverse mathematical topics and styles while reducing redundancy.
+
+Two continual pretraining configurations were evaluated. In the first setup (`Clust. 1`), the model was trained exclusively on the clustering-selected subset consisting of approximately 9B unique tokens. In the second setup (`Clust. 2`), we investigated the effect of repeated training on the curated subset under a larger compute budget, motivated by data-constrained scaling law observations suggesting that repeated exposure to high-quality data may outperform training once on larger mixed-quality corpora.
+
+The comparison table below presents the results of the clustering-based CPT experiments alongside the reproduced RHO-1 selective language modeling baselines.
+
