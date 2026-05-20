@@ -171,6 +171,44 @@ Performed continual pretraining (CPT) of TinyLlama-1.1B on the `OpenWebMath` dat
 <td><b>38.1</b></td>
 </tr>
 
+<tr style="background-color:#fff3cd;">
+<td><b>TinyLlama-SLM</b></td>
+<td>1.1B</td>
+<td>OWM</td>
+<td>14B</td>
+<td>15B</td>
+<td>9B</td>
+<td>7.1</td>
+<td>23.5</td>
+<td>41.2</td>
+<td>53.8</td>
+<td>—</td>
+<td>18.0</td>
+<td>—</td>
+<td>—</td>
+<td>5.0</td>
+<td>—</td>
+</tr>
+
+<tr style="background-color:#e6f7ff;">
+<td><b>TinyLlama-SLM</b></td>
+<td>1.1B</td>
+<td>OWM</td>
+<td>14B</td>
+<td>15B</td>
+<td>9B</td>
+<td>5.7</td>
+<td>20.2</td>
+<td>33.4</td>
+<td>45.0</td>
+<td>17.3</td>
+<td>13.6</td>
+<td>20.8</td>
+<td>21.9</td>
+<td>4.7</td>
+<td>20.3</td>
+</tr>
+
 </tbody>
 </table>
 &nbsp;
