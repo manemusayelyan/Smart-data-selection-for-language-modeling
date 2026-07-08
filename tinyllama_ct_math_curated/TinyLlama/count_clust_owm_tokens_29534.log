@@ -1,0 +1,29 @@
+
+--- MATCHED TO TRAINING ---
+total files        : 4,305
+usable files       : 4,288
+dropped files      : 17
+total tokens       : 8.9970 B
+total blocks       : 4,390,912
+tokens / step      : 1,048,576
+
+*** max_steps      : 8,576 ***
+
+
+--max_steps 13952
+13952 / 8576 ≈ 1.63
+
+warmup_steps = 300
+stable_steps = 6704
+total ≈ 8704
+
+--warmup_steps 490
+--stable_steps 10928
+--save_interval 6976   # still ~0.5 epoch
+
+-------------------------------------------------------------
+
+--max_steps 13952 \
+--warmup_steps 490 \
+--stable_steps 10928 \
+--save_interval 6976
