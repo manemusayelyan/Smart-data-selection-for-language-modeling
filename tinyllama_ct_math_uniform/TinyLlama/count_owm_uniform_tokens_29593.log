@@ -1,0 +1,11 @@
+
+--- MATCHED TO TRAINING ---
+total files        : 4,344
+usable files       : 4,288
+dropped files      : 56
+total tokens       : 8.9970 B
+total blocks       : 4,390,912
+tokens / step      : 1,048,576
+
+*** max_steps      : 8,576 ***
+
