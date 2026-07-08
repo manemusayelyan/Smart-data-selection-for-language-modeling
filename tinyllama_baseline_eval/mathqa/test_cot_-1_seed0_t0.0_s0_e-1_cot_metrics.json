@@ -1,0 +1,17 @@
+{
+    "num_samples": 1000,
+    "num_scores": 1000,
+    "timeout_samples": 6,
+    "empty_samples": 0,
+    "acc": 13.9,
+    "type_acc": {
+        "gain": 11.1,
+        "general": 12.6,
+        "geometry": 17.8,
+        "other": 22.8,
+        "physics": 15.8,
+        "probability": 4.8
+    },
+    "time_use_in_second": 53.092507123947144,
+    "time_use_in_minite": "0:53"
+}
