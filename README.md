@@ -227,16 +227,36 @@ The comparison table below presents the results of the clustering-based CPT expe
 
 | Model | \|θ\| | Data | Uniq. Toks | For. | Back. | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT | MATH | Avg. |
 |:------|:----:|:----:|:----------:|:----:|:-----:|------:|------:|------:|------:|----:|----:|----------:|----:|------:|-----:|
-| **Baseline CPT** |||||||||||||||
 | TinyLlama_CT (RHO-1) | 1.1B | OWM | 14B | 15B | 15B | 6.4 | 21.7 | 36.7 | 47.7 | 17.9 | 13.9 | 23.0 | 25.0 | 2.4 | 21.6 |
 | TinyLlama_CT (My CT) | 1.1B | OWM | 14B | 15B | 15B | 5.3 | 19.9 | 32.7 | 42.1 | 14.7 | 11.9 | 20.4 | 25.0 | 3.5 | 19.5 |
-| **Selective Language Modeling (SLM)** |||||||||||||||
 | Rho-1-Math (SLM) | 1.1B | OWM | 14B | 15B | 9B | **29.8** | **49.2** | **61.4** | **79.8** | **25.8** | **30.4** | **24.7** | 28.1 | **14.0** | **38.1** |
 | TinyLlama-SLM (Self-Reference) | 1.1B | OWM | 14B | 15B | 9B | 7.1 | 23.5 | 41.2 | 53.8 | — | 18.0 | — | — | 5.0 | — |
 | TinyLlama-SLM (My Eval.) | 1.1B | OWM | 14B | 15B | 9B | 5.7 | 20.2 | 33.4 | 45.0 | 17.3 | 13.6 | 20.8 | 21.9 | 4.7 | 20.3 |
-| **Hierarchical Clustering CPT** |||||||||||||||
 | TinyLlama_CT Clust. 1 | 1.1B | Clust. OWM | 9B | 9B | 9B | 4.7 | 18.8 | 32.7 | 42.0 | 14.9 | 14.5 | 18.3 | 25.0 | 4.3 | 19.5 |
 | TinyLlama_CT Clust. 2 | 1.1B | Clust. OWM | 9B | 15B | 15B | 5.4 | 19.8 | 32.1 | 44.3 | 15.3 | 10.0 | 19.3 | 28.1 | 4.7 | 19.9 |
-| **Random Sampling CPT** |||||||||||||||
 | TinyLlama_CT Rand. 1 | 1.1B | Rand. OWM | 9B | 9B | 9B | 3.9 | 20.4 | 31.3 | 40.0 | 15.1 | 10.8 | 17.0 | 25.0 | 3.3 | 18.5 |
 | TinyLlama_CT Rand. 2 | 1.1B | Rand. OWM | 9B | 15B | 15B | 5.5 | 17.6 | 30.2 | 41.2 | 13.5 | 12.0 | 18.9 | **40.6** | 3.5 | 20.3 |
+
+
+
+## Hybrid: Hierarchical Clustering + Selective Language Modeling
+
+Finally, we investigated whether dataset-level curation and token-level selection are complementary by combining both approaches into a single training pipeline. We first applied hierarchical clustering to construct a balanced 9B-token subset of the `OpenWebMath` dataset, and then performed Selective Language Modeling (SLM) within the curated subset using the self-reference reference-model approach inspired by RHO-1.
+
+Two hybrid configurations were evaluated. In the first experiment (`Clust. + RHO-1 RM`), SLM was performed on the 9B-token clustering-selected subset using the corresponding reference model. In the second experiment (`Clust. + RHO-1 RM (Repeated)`), the same hybrid pipeline was trained with an extended compute budget by repeating the curated dataset, allowing us to investigate whether additional passes over a high-quality subset improve performance.
+
+These experiments evaluate whether combining dataset-level diversity-aware selection with token-level filtering provides additive benefits over applying either approach independently.
+
+| Model | \|θ\| | Data | Uniq. Toks | For. | Back. | GSM8K | SVAMP | ASDiv | MAWPS | TAB | MQA | MMLU STEM | SAT | MATH | Avg. |
+|:------|:----:|:----:|:----------:|:----:|:-----:|------:|------:|------:|------:|----:|----:|----------:|----:|------:|-----:|
+| TinyLlama_CT (RHO-1) | 1.1B | OWM | 14B | 15B | 15B | 6.4 | 21.7 | 36.7 | 47.7 | 17.9 | 13.9 | 23.0 | 25.0 | 2.4 | 21.6 |
+| TinyLlama_CT (My CT) | 1.1B | OWM | 14B | 15B | 15B | 5.3 | 19.9 | 32.7 | 42.1 | 14.7 | 11.9 | 20.4 | 25.0 | 3.5 | 19.5 |
+| Rho-1-Math (SLM) | 1.1B | OWM | 14B | 15B | 9B | **29.8** | **49.2** | **61.4** | **79.8** | **25.8** | **30.4** | **24.7** | **28.1** | **14.0** | **38.1** |
+| TinyLlama-SLM (Self-Reference) | 1.1B | OWM | 14B | 15B | 9B | 7.1 | 23.5 | 41.2 | 53.8 | — | 18.0 | — | — | 5.0 | — |
+| TinyLlama-SLM (My Eval.) | 1.1B | OWM | 14B | 15B | 9B | 5.7 | 20.2 | 33.4 | 45.0 | 17.3 | 13.6 | 20.8 | 21.9 | 4.7 | 20.3 |
+| TinyLlama_CT Clust. 1 | 1.1B | Clust. OWM | 9B | 9B | 9B | 4.7 | 18.8 | 32.7 | 42.0 | 14.9 | 14.5 | 18.3 | 25.0 | 4.3 | 19.5 |
+| TinyLlama_CT Clust. 2 | 1.1B | Clust. OWM | 9B | 15B | 15B | 5.4 | 19.8 | 32.1 | 44.3 | 15.3 | 10.0 | 19.3 | 28.1 | 4.7 | 19.9 |
+| TinyLlama_CT Rand. 1 | 1.1B | Rand. OWM | 9B | 9B | 9B | 3.9 | 20.4 | 31.3 | 40.0 | 15.1 | 10.8 | 17.0 | 25.0 | 3.3 | 18.5 |
+| TinyLlama_CT Rand. 2 | 1.1B | Rand. OWM | 9B | 15B | 15B | 5.5 | 17.6 | 30.2 | 41.2 | 13.5 | 12.0 | 18.9 | **40.6** | 3.5 | 20.3 |
+| TinyLlama Hybrid (9B) | 1.1B | Clust. OWM | 9B | 9B | 5.4B | 5.3 | 19.9 | 33.1 | 44.3 | 16.2 | 13.5 | 20.9 | 21.9 | 3.4 | 19.8 |
+| TinyLlama Hybrid (15B Compute) | 1.1B | Clust. OWM | 9B | 25B | 15B | 6.2 | 20.7 | 36.9 | 50.8 | 16.6 | 13.0 | 22.4 | 18.8 | 4.0 | 21.0 |
